@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Stories from "react-insta-stories";
+import { Renderer, Story } from "react-insta-stories/dist/interfaces";
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
   );
 }
 
-const Story2 = ({ action, isPaused }: any) => {
+const Story2: Renderer = ({ action, isPaused }) => {
   return (
     <div style={{ ...contentStyle, background: "Aquamarine", color: "#333" }}>
       <h1>You get the control of the story.</h1>
@@ -46,9 +47,9 @@ const Story2 = ({ action, isPaused }: any) => {
   );
 };
 
-const stories2 = [
+const stories2: Story[] = [
   {
-    content: ({ action, isPaused }: any) => {
+    content: ({ action, isPaused }) => {
       return (
         <div style={contentStyle}>
           <h1>The new version is here.</h1>
@@ -70,17 +71,17 @@ const stories2 = [
     },
   },
   {
-    content: ({ action, story }: any) => {
+    content: ({ action, story }) => {
       return (
-          <div style={{ background: "snow", padding: 20, height: "100%" }}>
-            <h1 style={{ marginTop: "100%", marginBottom: 0 }}>🌝</h1>
-            <h1 style={{ marginTop: 5 }}>
-              We have our good old image and video stories, just the same.
-            </h1>
-          </div>
+        <div style={{ background: "snow", padding: 20, height: "100%" }}>
+          <h1 style={{ marginTop: "100%", marginBottom: 0 }}>🌝</h1>
+          <h1 style={{ marginTop: 5 }}>
+            We have our good old image and video stories, just the same.
+          </h1>
+        </div>
       );
     },
-    seeMoreCollapsed: ({ toggleMore, action }: any) => (
+    seeMoreCollapsed: ({ toggleMore, action }) => (
       <p style={customSeeMore} onClick={() => toggleMore(true)}>
         A custom See More message →
       </p>
