@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import Stories from "react-insta-stories";
 import { Renderer, Story } from "react-insta-stories/dist/interfaces";
+import ImageRenderer from "./utils/ImageRenderer";
 
 function App() {
   return (
@@ -25,6 +26,16 @@ function App() {
     </div>
   );
 }
+
+const Story3: Renderer = (props) => {
+  props.story.url = "https://picsum.photos/1080/1920";
+
+  return (
+    <div id="imagen-nicole">
+      <ImageRenderer {...props} />
+    </div>
+  );
+};
 
 const Story2: Renderer = ({ action, isPaused }) => {
   return (
@@ -102,6 +113,9 @@ const stories2: Story[] = [
       </div>
     ),
     duration: 5000,
+  },
+  {
+    content: Story3,
   },
   {
     url: "https://picsum.photos/1080/1920",
