@@ -2,39 +2,62 @@ import React from "react";
 import "./App.css";
 import Stories from "react-insta-stories";
 import { Renderer, Story } from "react-insta-stories/dist/interfaces";
-import ImageRenderer from "./utils/ImageRenderer";
+import ImageRenderer from "./components/ImageRenderer";
+import { AppInsightsContextProvider } from "./tracking/AppInsightsContext";
+import TrackImageRenderer from "./components/TrackImageRenderer";
 
 function App() {
   return (
-    <div className="App">
-      <div className="stories">
-        <Stories
-          loop
-          keyboardNavigation
-          defaultInterval={8000}
-          stories={stories2}
-          onStoryEnd={(s: any, st: any) => console.log("story ended", s, st)}
-          onAllStoriesEnd={(s: any, st: any) =>
-            console.log("all stories ended", s, st)
-          }
-          onStoryStart={(s: any, st: any) =>
-            console.log("story started", s, st)
-          }
-          storyContainerStyles={{ borderRadius: 8, overflow: "hidden" }}
-        />
+    <AppInsightsContextProvider>
+      <div className="App">
+        <div className="stories">
+          <Stories
+            loop={false}
+            keyboardNavigation
+            defaultInterval={10000}
+            stories={stories2}
+            onStoryEnd={(s: any, st: any) => console.log("story ended", s, st)}
+            onAllStoriesEnd={(s: any, st: any) =>
+              console.log("all stories ended", s, st)
+            }
+            onStoryStart={(s: any, st: any) =>
+              console.log("story started", s, st)
+            }
+            storyContainerStyles={{ borderRadius: 8, overflow: "hidden" }}
+          />
+        </div>
       </div>
-    </div>
+    </AppInsightsContextProvider>
   );
 }
 
 const Story3: Renderer = (props) => {
   props.story.url = "https://picsum.photos/1080/1920";
 
-  return (
-    <div id="imagen-nicole">
-      <ImageRenderer {...props} />
-    </div>
-  );
+  return <TrackImageRenderer name="Paisaje" renderer={props} tag="bitcoin" />;
+};
+const Story4: Renderer = (props) => {
+  props.story.url = "https://picsum.photos/1080/1920";
+
+  return <TrackImageRenderer name="Paisaje" renderer={props} tag="autos" />;
+};
+
+const Story5: Renderer = (props) => {
+  props.story.url = "https://picsum.photos/1080/1920";
+
+  return <TrackImageRenderer name="Paisaje" renderer={props} tag="ropa" />;
+};
+
+const Story6: Renderer = (props) => {
+  props.story.url = "https://picsum.photos/1080/1920";
+
+  return <TrackImageRenderer name="Paisaje" renderer={props} tag="autos" />;
+};
+
+const Story7: Renderer = (props) => {
+  props.story.url = "https://picsum.photos/1080/1920";
+
+  return <TrackImageRenderer name="Paisaje" renderer={props} tag="ropa" />;
 };
 
 const Story2: Renderer = ({ action, isPaused }) => {
@@ -116,6 +139,18 @@ const stories2: Story[] = [
   },
   {
     content: Story3,
+  },
+  {
+    content: Story4,
+  },
+  {
+    content: Story5,
+  },
+  {
+    content: Story6,
+  },
+  {
+    content: Story7,
   },
   {
     url: "https://picsum.photos/1080/1920",
