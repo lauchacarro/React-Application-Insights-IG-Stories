@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import Stories from "react-insta-stories";
 import { Renderer, Story } from "react-insta-stories/dist/interfaces";
-import ImageRenderer from "./components/ImageRenderer";
 import { AppInsightsContextProvider } from "./tracking/AppInsightsContext";
 import TrackImageRenderer from "./components/TrackImageRenderer";
 import TrackVideoRenderer from "./components/TrackVideoRenderer";
@@ -121,33 +120,5 @@ const stories2: Story[] = [
     content: Story10,
   },
 ];
-
-const image = {
-  display: "block",
-  maxWidth: "100%",
-  borderRadius: 4,
-};
-
-const code = {
-  background: "#eee",
-  padding: "5px 10px",
-  borderRadius: "4px",
-  color: "#333",
-};
-
-const contentStyle: React.CSSProperties = {
-  background: "#333",
-  width: "100%",
-  padding: 20,
-  color: "white",
-  height: "100%",
-};
-
-const customSeeMore: React.CSSProperties = {
-  textAlign: "center",
-  fontSize: 14,
-  bottom: 20,
-  position: "relative",
-};
 
 export default App;
