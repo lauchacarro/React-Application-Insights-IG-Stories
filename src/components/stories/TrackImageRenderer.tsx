@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { useAppInsightsContext } from "../tracking/AppInsightsContext";
-import useComponentTracking from "../tracking/hooks/useComponentTracking";
-import { RendererProps } from "../utils/RendererProps";
+import { useAppInsightsContext } from "../../tracking/AppInsightsContext";
+import useComponentTracking from "../../tracking/hooks/useComponentTracking";
+import { RendererProps } from "../../utils/RendererProps";
 import ImageRenderer from "./ImageRenderer";
 
 interface TrackImageRendererProps {

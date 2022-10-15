@@ -1,124 +1,58 @@
 import React from "react";
 import "./App.css";
-import Stories from "react-insta-stories";
-import { Renderer, Story } from "react-insta-stories/dist/interfaces";
 import { AppInsightsContextProvider } from "./tracking/AppInsightsContext";
-import TrackImageRenderer from "./components/TrackImageRenderer";
-import TrackVideoRenderer from "./components/TrackVideoRenderer";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import StoriesPage from "./pages/StoriesPage";
+import ButtonsPage from "./pages/ButtonsPage";
 
 function App() {
   return (
-    <AppInsightsContextProvider>
-      <div className="App">
-        <div className="stories">
-          <Stories
-            loop={false}
-            keyboardNavigation
-            defaultInterval={10000}
-            stories={stories2}
-            onStoryEnd={(s: any, st: any) => console.log("story ended", s, st)}
-            onAllStoriesEnd={(s: any, st: any) =>
-              console.log("all stories ended", s, st)
-            }
-            onStoryStart={(s: any, st: any) =>
-              console.log("story started", s, st)
-            }
-            storyContainerStyles={{ borderRadius: 8, overflow: "hidden" }}
-          />
+    <>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <a className="navbar-brand" href="#">
+          Navbar
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item active">
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
+            </li>
+            <li className="nav-item active">
+              <Link className="nav-link" to="/buttons">
+                Botones
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/stories">
+                IG Stories
+              </Link>
+            </li>
+          </ul>
         </div>
+      </nav>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/stories" element={<StoriesPage />} />
+          <Route path="/buttons" element={<ButtonsPage />} />
+        </Routes>
       </div>
-    </AppInsightsContextProvider>
+    </>
   );
 }
-
-const Story1: Renderer = (props) => {
-  props.story.url = "/img/stories/bitcoin (1).png";
-
-  return <TrackImageRenderer name="Bitcoin Piernas" renderer={props} tag="bitcoin" />;
-};
-
-const Story2: Renderer = (props) => {
-  props.story.url = "/img/stories/playa (1).png";
-
-  return <TrackImageRenderer name="Playa Cabañas" renderer={props} tag="playa" />;
-};
-
-const Story3: Renderer = (props) => {
-  props.story.url = "/img/stories/iphone (1).png";
-
-  return <TrackImageRenderer name="IPhone 14" renderer={props} tag="iphone" />;
-};
-
-const Story4: Renderer = (props) => {
-  props.story.url = "/videos/bitcoinvideo.mp4";
-  props.story.type = "video";
-  return <TrackVideoRenderer name="Bitcoin Video" renderer={props} tag="bitcoin" />;
-};
-
-const Story5: Renderer = (props) => {
-  props.story.url = "/img/stories/iphone (2).png";
-
-  return <TrackImageRenderer name="2 IPhones" renderer={props} tag="iphone" />;
-};
-
-const Story6: Renderer = (props) => {
-  props.story.url = "/img/stories/iphone (3).png";
-
-  return <TrackImageRenderer name="IPhone Prendido" renderer={props} tag="iphone" />;
-};
-
-const Story7: Renderer = (props) => {
-  props.story.url = "/videos/playavideo.mp4";
-  props.story.type = "video";
-  return <TrackVideoRenderer name="Playa Video" renderer={props} tag="playa" />;
-};
-
-const Story8: Renderer = (props) => {
-  props.story.url = "/img/stories/bitcoin (3).png";
-  return <TrackImageRenderer name="Bitcoin Moneda" renderer={props} tag="bitcoin" />;
-};
-
-const Story9: Renderer = (props) => {
-  props.story.url = "/img/stories/iphone (4).png";
-  return <TrackImageRenderer name="IPhone Plantas" renderer={props} tag="iphone" />;
-};
-const Story10: Renderer = (props) => {
-  props.story.url = "/img/stories/playa (3).png";
-  return <TrackImageRenderer name="Playa Paisaje" renderer={props} tag="playa" />;
-};
-
-const stories2: Story[] = [
-  {
-    content: Story1,
-  },
-  {
-    content: Story2,
-  },
-  {
-    content: Story3,
-  },
-  {
-    content: Story4,
-  },
-  {
-    content: Story5,
-  },
-  {
-    content: Story6,
-  },
-  {
-    content: Story7,
-  },
-  {
-    content: Story8,
-  },
-
-  {
-    content: Story9,
-  },
-  {
-    content: Story10,
-  },
-];
 
 export default App;

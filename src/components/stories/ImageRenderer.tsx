@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { WithHeader, WithSeeMore } from "react-insta-stories";
 import { Action, Renderer, Story } from "react-insta-stories/dist/interfaces";
-import { RendererProps } from "../utils/RendererProps";
-import Spinner from "../utils/Spinner";
+import { RendererProps } from "../../utils/RendererProps";
+import Spinner from "../../utils/Spinner";
 
 interface ImageRendererProps extends RendererProps {}
 

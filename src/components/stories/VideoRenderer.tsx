@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 
-import { RendererProps } from "../utils/RendererProps";
-import Spinner from "../utils/Spinner";
+import { RendererProps } from "../../utils/RendererProps";
+import Spinner from "../../utils/Spinner";
 
 interface VideoRendererProps extends RendererProps {}
 

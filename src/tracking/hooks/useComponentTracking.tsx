@@ -37,7 +37,7 @@ const useComponentTracking = (
     idleStartTimestamp: 0,
     idleCount: 0,
     idleTimeout: 50,
-    key: "10",
+    key: "11",
   });
   const savedCallback = useRef<() => void>();
 
@@ -83,6 +83,8 @@ const useComponentTracking = (
       const additionalProperties = {
         "Component Name": componentName,
         "Track Key": trackedData.key,
+        "email": "hello@lautarocarro.com",
+
         ...properties
       };
       reactPlugin.trackMetric(metricData, additionalProperties);
